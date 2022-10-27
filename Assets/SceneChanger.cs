@@ -12,12 +12,12 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadMainMenuScene()
     {
-        ChangeScene("MainMenuScene");
+        ChangeScene("UIScene");
     }
 
     public void LoadLevelScene()
     {
-        ChangeScene("LevelScene");
+        ChangeScene("Level1");
     }
 
     public void LoadTutorialScene()
