@@ -15,10 +15,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Animation")]
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         InitializeVariables();
+        animator = GetComponent<Animator>();
     }
 
     private void InitializeVariables()
@@ -30,6 +34,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        animator.SetFloat("Horizontal", Mathf.Abs(horizontal));
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
