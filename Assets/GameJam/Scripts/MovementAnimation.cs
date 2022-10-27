@@ -11,6 +11,8 @@ public class MovementAnimation : MonoBehaviour
     [Range(0, 0.3f)] [SerializeField] private float SmoothMovement;
     private Vector3 Velocity = Vector3.zero;
     private bool IsRight = true;
+    public bool CanMove = true;
+    [SerializeField] private Vector2 ReboundVelocity;
 
     [Header("Jump")]
     [SerializeField] private float JumpForce;
@@ -44,8 +46,10 @@ public class MovementAnimation : MonoBehaviour
         OnFloor = Physics2D.OverlapBox(CheckFloor.position, BoxDimesion, 0f, IsFloor);
         animator.SetBool("OnFloor", OnFloor);
         //Mover
-        Move(MovementHorizontal * Time.fixedDeltaTime, jump);
-
+        if (CanMove)
+        {
+            Move(MovementHorizontal * Time.fixedDeltaTime, jump);
+        }
         jump = false;
     }
 
@@ -68,6 +72,10 @@ public class MovementAnimation : MonoBehaviour
             OnFloor = false;
             rb2d.AddForce(new Vector2(0f, JumpForce));
         }
+    }
+
+    public void Rebound(Vector2 HitPoint){
+        rb2d.velocity = new Vector2(-ReboundVelocity.x * HitPoint.x, ReboundVelocity.y);
     }
 
     private void Turn (){
