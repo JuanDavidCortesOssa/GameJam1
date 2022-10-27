@@ -15,6 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    //Variables of time loop
+    private Vector2 FinalValue;
+    public static bool ExitLoop = false;
+    private int Seconds = 5;
+    private float RemainingTime;
+    private bool RunningTime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +49,41 @@ public class Player : MonoBehaviour
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, rigidBody.velocity.y * 0.5f);
         }
 
+        // key to start time loop
+        if (Input.GetKey(KeyCode.L))
+        {
+            Transform ExitLoop = GetComponent<Transform>();
+            FinalValue = ExitLoop.position;
+            StartTime();
+        }
+
+        //Check end of time loop
+        if (RunningTime)
+        {
+            RemainingTime -= Time.deltaTime;
+            if (RemainingTime < 1)
+            {
+                Player.ExitLoop = true;
+                RunningTime = false;
+            }
+        }
+
+        //Move player after time loop ends
+        if (ExitLoop)
+        {
+            Transform FinalPosition = GetComponent<Transform>();
+            FinalPosition.DOMove(FinalValue, 1);
+            ExitLoop = false;
+        }
+
         Flip();
+    }
+
+    //Start the time loop
+    public void StartTime()
+    {
+        RemainingTime = Seconds;
+        RunningTime = true;
     }
 
     private void FixedUpdate()
