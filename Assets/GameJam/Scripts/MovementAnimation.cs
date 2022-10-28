@@ -77,12 +77,6 @@ public class MovementAnimation : MonoBehaviour
             Perrito = false;
             Debug.Log("Funciona3");
         }
-
-        /*if (Input.GetKey(KeyCode.T) & FinalValue != null)
-        {
-            Transform ExitLoop = GetComponent<Transform>();
-            ExitLoop.position = new Vector2(FinalValue.x, FinalValue.y);
-        }*/
     }
 
     public void StartTime()
