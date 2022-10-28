@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class MovementAnimation : MonoBehaviour
     [SerializeField] private bool OnFloor;
     private bool jump = false;
 
+    private Vector2 FinalValue;
+    private bool Perrito;
+    private int Seconds = 5;
+    private float RemainingTime;
+    private bool RunningTime;
+
     [Header("Animation")]
     private Animator animator;
 
@@ -39,6 +46,49 @@ public class MovementAnimation : MonoBehaviour
         if(Input.GetButtonDown("Jump")){
             jump = true;
         }
+
+        // key to start time loop
+        if (Input.GetKey(KeyCode.L))
+        {
+            Transform ExitLoop = GetComponent<Transform>();
+            FinalValue = ExitLoop.position;
+            StartTime();
+            Debug.Log("Funciona0");
+        }
+
+        if (RunningTime)
+        {
+            RemainingTime -= Time.deltaTime;
+            if (RemainingTime < 1)
+            {
+                Player.ExitLoop = true;
+                RunningTime = false;
+                Perrito = true;
+                Debug.Log("Funciona2");
+            }
+        }
+
+        //Move player after time loop ends
+        if (Perrito)
+        {
+            Transform FinalPosition = GetComponent<Transform>();
+            FinalPosition.DOMove(FinalValue, 1);
+            Perrito = false;
+            Debug.Log("Funciona3");
+        }
+
+        /*if (Input.GetKey(KeyCode.T) & FinalValue != null)
+        {
+            Transform ExitLoop = GetComponent<Transform>();
+            ExitLoop.position = new Vector2(FinalValue.x, FinalValue.y);
+        }*/
+    }
+
+    public void StartTime()
+    {
+        RemainingTime = Seconds;
+        RunningTime = true;
+        Debug.Log("Funciona1");
     }
 
     private void FixedUpdate() {
