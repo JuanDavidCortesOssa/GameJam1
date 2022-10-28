@@ -42,6 +42,11 @@ public class BarLoop : MonoBehaviour
         if (cont <= 4)
         {
             Invoke("FunctionPrueba", 1f);
+        } else if (cont >= 5)
+        {
+            cont = 0;
+            Bar.value = 0;
+            Valuestring.text = 0 + "Seg";
         }
         
     }
