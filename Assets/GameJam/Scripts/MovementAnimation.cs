@@ -31,6 +31,7 @@ public class MovementAnimation : MonoBehaviour
 
     [Header("Animation")]
     private Animator animator;
+    [SerializeField] private AudioClip soundJump;
 
     private void Start() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -121,6 +122,7 @@ public class MovementAnimation : MonoBehaviour
         if(OnFloor && jump){
             OnFloor = false;
             rb2d.AddForce(new Vector2(0f, JumpForce));
+            SoundController.Instance.PlaySound(soundJump);
         }
     }
 
