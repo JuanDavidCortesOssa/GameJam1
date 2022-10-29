@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     //Variables of time loop
-    private Vector2 FinalValue;
-    public static bool ExitLoop = false;
-    private int Seconds = 5;
-    private float RemainingTime;
-    private bool RunningTime;
+    private Vector2 finalValue;
+    public static bool exitLoop = false;
+    private int seconds = 5;
+    private float remainingTime;
+    private bool runningTime;
 
 
     // Start is called before the first frame update
@@ -52,28 +52,28 @@ public class Player : MonoBehaviour
         // key to start time loop
         if (Input.GetKey(KeyCode.L))
         {
-            Transform ExitLoop = GetComponent<Transform>();
-            FinalValue = ExitLoop.position;
+            Transform exit = GetComponent<Transform>();
+            finalValue = exit.position;
             StartTime();
         }
 
         //Check end of time loop
-        if (RunningTime)
+        if (runningTime)
         {
-            RemainingTime -= Time.deltaTime;
-            if (RemainingTime < 1)
+            remainingTime -= Time.deltaTime;
+            if (remainingTime < 1)
             {
-                Player.ExitLoop = true;
-                RunningTime = false;
+                exitLoop = true;
+                runningTime = false;
             }
         }
 
         //Move player after time loop ends
-        if (ExitLoop)
+        if (exitLoop)
         {
             Transform FinalPosition = GetComponent<Transform>();
-            FinalPosition.DOMove(FinalValue, 1);
-            ExitLoop = false;
+            FinalPosition.DOMove(finalValue, 1);
+            exitLoop = false;
         }
 
         Flip();
@@ -82,8 +82,8 @@ public class Player : MonoBehaviour
     //Start the time loop
     public void StartTime()
     {
-        RemainingTime = Seconds;
-        RunningTime = true;
+        remainingTime = seconds;
+        runningTime = true;
     }
 
     private void FixedUpdate()

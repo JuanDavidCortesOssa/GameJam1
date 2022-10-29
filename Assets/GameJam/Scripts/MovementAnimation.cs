@@ -23,11 +23,13 @@ public class MovementAnimation : MonoBehaviour
     [SerializeField] private bool OnFloor;
     private bool jump = false;
 
-    private Vector2 FinalValue;
-    private bool Perrito;
-    private int Seconds = 5;
-    private float RemainingTime;
-    private bool RunningTime;
+    //Variables of time loop
+    private Vector2 finalValue;
+    private bool exitLoop;
+    private int seconds = 5;
+    private float remainingTime;
+    private bool runningTime;
+    private bool loop = true;
 
     [Header("Animation")]
     private Animator animator;
@@ -48,49 +50,49 @@ public class MovementAnimation : MonoBehaviour
             jump = true;
         }
 
-        // key to start time loop
-        if (Input.GetKey(KeyCode.L))
+        // key to start time loop and check loop
+        if (Input.GetKey(KeyCode.L) && loop == true)
         {
-            Transform ExitLoop = GetComponent<Transform>();
-            FinalValue = ExitLoop.position;
+            loop = false;
+            Transform exit = GetComponent<Transform>();
+            finalValue = exit.position;
             StartTime();
-            Debug.Log("Funciona0");
+            Invoke("CoolDownLoop", 5.0f);
         }
 
-        if (RunningTime)
+        //Check end of time loop
+        if (runningTime)
         {
-            RemainingTime -= Time.deltaTime;
-            if (RemainingTime < 1)
+            remainingTime -= Time.deltaTime;
+            if (remainingTime < 1)
             {
-                Player.ExitLoop = true;
-                RunningTime = false;
-                Perrito = true;
-                Debug.Log("Funciona2");
+                runningTime = false;
+                exitLoop = true;
             }
         }
 
         //Move player after time loop ends
-        if (Perrito)
+        if (exitLoop)
         {
-            Transform FinalPosition = GetComponent<Transform>();
-            FinalPosition.DOMove(FinalValue, 1);
-            Perrito = false;
-            Debug.Log("Funciona3");
+            Transform finalPosition = GetComponent<Transform>();
+            finalPosition.DOMove(finalValue, 1);
+            exitLoop = false;
         }
     }
 
+    //Start the time loop
     public void StartTime()
     {
-        RemainingTime = Seconds;
-        RunningTime = true;
-        Debug.Log("Funciona1");
+        remainingTime = seconds;
+        runningTime = true;
     }
 
     private void FixedUpdate() {
 
         OnFloor = Physics2D.OverlapBox(CheckFloor.position, BoxDimesion, 0f, IsFloor);
         animator.SetBool("OnFloor", OnFloor);
-        //Mover
+
+        //Move player
         if (CanMove)
         {
             Move(MovementHorizontal * Time.fixedDeltaTime, jump);
@@ -102,17 +104,17 @@ public class MovementAnimation : MonoBehaviour
         Vector3 VelocityObject = new Vector2(move, rb2d.velocity.y);
         rb2d.velocity = Vector3.SmoothDamp(rb2d.velocity, VelocityObject, ref Velocity, SmoothMovement);
 
+        //Turn the player
         if(move > 0 && !IsRight)
         {
-            //Girar
             Turn();
         }
         else if(move < 0 && IsRight)
         {
-            //Girar
             Turn();
         }
 
+        //Jump and jump sound
         if(OnFloor && jump){
             OnFloor = false;
             rb2d.AddForce(new Vector2(0f, JumpForce));
@@ -134,5 +136,11 @@ public class MovementAnimation : MonoBehaviour
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(CheckFloor.position, BoxDimesion);
+    }
+
+    //Reload the loop
+    private void CoolDownLoop()
+    {
+        loop = true;
     }
 }

@@ -5,49 +5,59 @@ using UnityEngine.UI;
 
 public class BarLoop : MonoBehaviour
 {
-    Slider Bar;
+    Slider bar;
 
-    public float max;
-    public float act;
-    public Text Valuestring;
-    public bool loop = false;
-    int cont;
+    public Text valuestring;
+    private bool loop = true;
+    private int cont;
 
     private void Awake()
     {
-        Bar = GetComponent<Slider>();
+        bar = GetComponent<Slider>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        // key to start timer loop and check loop
+        if (Input.GetKeyDown(KeyCode.L) && loop == true)
         {
-            FunctionPrueba();
+            loop = false;
+            TimerLoop();
+            Invoke("CoolDownLoop", 5.0f);
         }
     }
 
+    //Progress timer
     void UpdateValueBar (float valueMax, float valueAct)
     {
         float porcentant;
         porcentant = valueAct / valueMax;
-        Bar.value = porcentant;
+        bar.value = porcentant;
     }
 
-    public void FunctionPrueba()
+    //Start timer
+    public void TimerLoop()
     {
         loop = false;
         UpdateValueBar(4, cont);
         cont++;
-        Valuestring.text = cont + "Seg";
+        valuestring.text = cont + "Seg";
         if (cont <= 4)
         {
-            Invoke("FunctionPrueba", 1f);
+            Invoke("TimerLoop", 1f);
         } else if (cont >= 5)
         {
             cont = 0;
-            Bar.value = 0;
-            Valuestring.text = 0 + "Seg";
+            bar.value = 0;
+            valuestring.text = 0 + "Seg";
         }
         
     }
+
+    //Reload timer
+    private void CoolDownLoop()
+    {
+        loop = true;
+    }
+
 }
