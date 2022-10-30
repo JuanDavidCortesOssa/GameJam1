@@ -1738,7 +1738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -269, y: 136}
+  m_AnchoredPosition: {x: -191, y: 115}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407125658
@@ -2607,7 +2607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a89fcce35d90fb4d9dbf56556682ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteChange: {fileID: 0}
+  spriteChange: {fileID: 21300022, guid: ae3918a914038694d852d0bb81f62473, type: 3}
   slidingWalls:
   - wallGameObject: {fileID: 1847695216}
     finalPosition: {fileID: 1662382803}
@@ -2633,7 +2633,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5416667, y: 0.6458333}
+    oldSize: {x: 0.8125, y: 0.6041667}
     newSize: {x: 0.5416667, y: 0.6458333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6294,6 +6294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 364346809}
     m_Modifications:
+    - target: {fileID: 7590350808671194463, guid: d0ed55337ed59a1478d2c0852e17e350, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300024, guid: ae3918a914038694d852d0bb81f62473, type: 3}
     - target: {fileID: 7756297877266339499, guid: d0ed55337ed59a1478d2c0852e17e350, type: 3}
       propertyPath: m_Name
       value: Bot1
@@ -6784,7 +6788,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1951260891
 Canvas:
   m_ObjectHideFlags: 0
@@ -6794,7 +6798,7 @@ Canvas:
   m_GameObject: {fileID: 1951260888}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 5035902386707966043}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -6814,8 +6818,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951260888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 95.6}
+  m_LocalScale: {x: 0.04261168, y: 0.04261168, z: 0.04261168}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 407125657}
@@ -6824,9 +6828,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.020000458, y: 0.29000068}
+  m_SizeDelta: {x: 517, y: 291}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2008522144
 GameObject:
   m_ObjectHideFlags: 0
@@ -7761,6 +7765,38 @@ PrefabInstance:
     - target: {fileID: 4112145620028305398, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754261, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754261, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 431
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112145620319754263, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.7921569
       objectReference: {fileID: 0}
     - target: {fileID: 4112145621446289157, guid: 5079faa8d25ec5947938a03610cd9476, type: 3}
       propertyPath: m_AnchorMax.y
