@@ -24,4 +24,9 @@ public class SceneChanger : MonoBehaviour
     {
         ChangeScene("TutorialScene");
     }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

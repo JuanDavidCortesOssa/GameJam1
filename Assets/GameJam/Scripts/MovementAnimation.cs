@@ -23,6 +23,9 @@ public class MovementAnimation : MonoBehaviour
     [SerializeField] private bool OnFloor;
     private bool jump = false;
 
+    //Variable for the Trail
+    [SerializeField] private TrailRenderer trailRenderer;
+
     //Variables of time loop
     private Vector2 finalValue;
     private bool exitLoop;
@@ -51,13 +54,14 @@ public class MovementAnimation : MonoBehaviour
         }
 
         // key to start time loop and check loop
-        if (Input.GetKey(KeyCode.L) && loop == true)
+        if (Input.GetKey(KeyCode.R) && loop == true)
         {
             loop = false;
             Transform exit = GetComponent<Transform>();
             finalValue = exit.position;
             StartTime();
             Invoke("CoolDownLoop", 5.0f);
+            StartTrail();
         }
 
         //Check end of time loop
@@ -77,6 +81,7 @@ public class MovementAnimation : MonoBehaviour
             Transform finalPosition = GetComponent<Transform>();
             finalPosition.DOMove(finalValue, 1);
             exitLoop = false;
+            StopTrail();
         }
     }
 
@@ -142,5 +147,18 @@ public class MovementAnimation : MonoBehaviour
     private void CoolDownLoop()
     {
         loop = true;
+    }
+
+
+    //Use trail effect
+    private void StartTrail()
+    {
+        trailRenderer.emitting = true;
+    }
+
+    private void StopTrail()
+    {
+        trailRenderer.emitting = false;
+        trailRenderer.Clear();
     }
 }

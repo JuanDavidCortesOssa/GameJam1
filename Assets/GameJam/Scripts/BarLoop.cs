@@ -19,7 +19,7 @@ public class BarLoop : MonoBehaviour
     void Update()
     {
         // key to start timer loop and check loop
-        if (Input.GetKeyDown(KeyCode.L) && loop == true)
+        if (Input.GetKeyDown(KeyCode.R) && loop == true)
         {
             loop = false;
             TimerLoop();

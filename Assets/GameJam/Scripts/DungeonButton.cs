@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class DungeonButton : MonoBehaviour
 {
+    [SerializeField] private Sprite spriteChange;
+
     [Serializable]
     public class SlidingWall
     {
@@ -26,11 +28,10 @@ public class DungeonButton : MonoBehaviour
     {
         if (isActive)
         {
-            Debug.Log("SlideWall");
             foreach (var slidingWall in slidingWalls)
             {
                 slidingWall.MoveWall(interpolationTime);
-                Debug.Log("SlideWall");
+                GetComponent<SpriteRenderer>().sprite = spriteChange;
             }
             isActive = false;
         }
