@@ -5374,6 +5374,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3974381463351529947, guid: 89716b3e14156a444ac9bdb4d3c3c8ad, type: 3}
+      propertyPath: levelName
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3974381463351529947, guid: 89716b3e14156a444ac9bdb4d3c3c8ad, type: 3}
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 435477050}
