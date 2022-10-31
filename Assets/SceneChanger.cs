@@ -20,11 +20,6 @@ public class SceneChanger : MonoBehaviour
         ChangeScene("Level1");
     }
 
-    public void LoadWin()
-    {
-        ChangeScene("Win");
-    }
-
     public void LoadTutorialScene()
     {
         ChangeScene("TutorialScene");
