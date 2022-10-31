@@ -6,17 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/GameJam/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/GameJam/Scenes/Level1.unity
-    guid: 6dcedc94370993245866329005e4700d
+    path: Assets/GameJam/Scenes/UIScene.unity
+    guid: d9382c9f08027094a8c12eaaf0730d85
   - enabled: 1
     path: Assets/GameJam/Scenes/TutorialScene.unity
     guid: f88dbcf46a728ab49b14bda900b94656
   - enabled: 1
-    path: Assets/GameJam/Scenes/UIScene.unity
-    guid: d9382c9f08027094a8c12eaaf0730d85
+    path: Assets/GameJam/Scenes/Level1.unity
+    guid: 6dcedc94370993245866329005e4700d
   - enabled: 1
     path: Assets/GameJam/Scenes/Level2.unity
     guid: 1a2c08b4baad58f4b967a1248822d054
