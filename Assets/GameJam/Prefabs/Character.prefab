@@ -181,6 +181,7 @@ MonoBehaviour:
   BoxDimesion: {x: 1, y: 0.25, z: 0}
   OnFloor: 0
   trailRenderer: {fileID: 4372236052677841984}
+  timeClonePrefab: {fileID: 6812392190195178711, guid: 2771b38bb71f64c4d894d3abe1981c36, type: 3}
   soundJump: {fileID: 8300000, guid: 219a71238c8a92641b22312dc2f5ef2e, type: 3}
 --- !u!1 &6653010315296369470
 GameObject:

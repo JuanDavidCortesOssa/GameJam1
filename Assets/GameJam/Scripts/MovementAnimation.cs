@@ -25,6 +25,8 @@ public class MovementAnimation : MonoBehaviour
 
     //Variable for the Trail
     [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private GameObject timeClonePrefab;
+    private GameObject timeClone;
 
     //Variables of time loop
     private Vector2 finalValue;
@@ -153,12 +155,21 @@ public class MovementAnimation : MonoBehaviour
     //Use trail effect
     private void StartTrail()
     {
+        //Emmit trail
         trailRenderer.emitting = true;
+
+        //Generate clone
+        timeClone = Instantiate(timeClonePrefab, transform.position + Vector3.back , transform.rotation);
+        timeClone.transform.localScale = transform.localScale;
     }
 
     private void StopTrail()
     {
+        //Stop trail
         trailRenderer.emitting = false;
         trailRenderer.Clear();
+
+        //Delete Clone
+        Destroy(timeClone);
     }
 }
