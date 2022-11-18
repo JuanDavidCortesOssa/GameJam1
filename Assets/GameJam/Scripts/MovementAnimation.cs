@@ -23,7 +23,7 @@ public class MovementAnimation : MonoBehaviour
     [SerializeField] private bool OnFloor;
     private bool jump = false;
 
-    //Variable for the Trail
+    //Variables for the trail
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private GameObject timeClonePrefab;
     private GameObject timeClone;
@@ -35,6 +35,7 @@ public class MovementAnimation : MonoBehaviour
     private float remainingTime;
     private bool runningTime;
     private bool loop = true;
+    [SerializeField] private TimeLineBar timeLineBar;
 
     [Header("Animation")]
     private Animator animator;
@@ -62,8 +63,10 @@ public class MovementAnimation : MonoBehaviour
             Transform exit = GetComponent<Transform>();
             finalValue = exit.position;
             StartTime();
-            Invoke("CoolDownLoop", 5.0f);
             StartTrail();
+            timeLineBar.EmptyBar();
+            Invoke("CoolDownLoop", 5f);
+
         }
 
         //Check end of time loop
@@ -82,6 +85,7 @@ public class MovementAnimation : MonoBehaviour
         {
             Transform finalPosition = GetComponent<Transform>();
             finalPosition.DOMove(finalValue, 1);
+            timeLineBar.ReloadBar();
             exitLoop = false;
             StopTrail();
         }
